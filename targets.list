@@ -1,0 +1,4 @@
+GET https://covid19-proxy.osc-fr1.scalingo.io
+POST https://covid19-proxy.osc-fr1.scalingo.io/orientation
+Content-Type: application/json
+@questionnaire.json

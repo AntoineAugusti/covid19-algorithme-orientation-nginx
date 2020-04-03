@@ -1,0 +1,32 @@
+# Rate-Limit connections
+limit_conn_zone $http_x_forwarded_for zone=conn:10m;
+limit_conn_status 509;
+
+# Rate-limit requests
+limit_req_zone $http_x_request_id zone=questionnaire_req:1024m rate=50r/s;
+limit_req_zone $http_x_forwarded_for zone=token_req:1024m rate=50r/s;
+limit_req_zone $http_x_forwarded_for zone=root_req:1024m rate=250r/s;
+limit_req_status 429;
+
+server {
+    server_name localhost;
+    listen <%= ENV["PORT"] %>;
+
+    location /questionnaire {
+        limit_conn conn 10;
+        limit_req zone=token_req burst=200 delay=80;
+        proxy_pass <%= ENV["API_URL"] %>;
+    }
+
+    location /token {
+        limit_conn conn 10;
+        limit_req zone=token_req burst=200 delay=80;
+        proxy_pass <%= ENV["API_URL"] %>;
+    }
+
+    location / {
+      limit_conn conn 50;
+      limit_req zone=root_req burst=1000 delay=320;
+      proxy_pass <%= ENV["API_URL"] %>;
+    }
+}

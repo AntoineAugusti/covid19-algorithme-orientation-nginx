@@ -1,0 +1,31 @@
+{
+  "orientation": {
+    "pronostiques": {
+      "age": 70,
+      "cancer": true,
+      "cardiaque": true,
+      "diabetique": true,
+      "enceinte": true,
+      "immodeprime": true,
+      "insuffisance_renale": true,
+      "maladie_chronique_foie": true,
+      "poids": 65.5,
+      "respiratoire": true,
+      "taille": 1.73,
+      "traitement_immunosuppresseur": true
+    },
+    "supplementaires": {
+      "code_postal": "75000"
+    },
+    "symptomes": {
+      "anosmie": true,
+      "diarrhee": true,
+      "diffs_alim_boire": true,
+      "essoufle": true,
+      "fatigue": true,
+      "mal_de_gorge": true,
+      "temperature": 37.5,
+      "toux": true
+    }
+  }
+}
