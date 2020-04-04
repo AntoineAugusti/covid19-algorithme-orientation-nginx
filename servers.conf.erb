@@ -14,7 +14,7 @@ server {
 
     location /questionnaire {
         limit_conn conn 10;
-        limit_req zone=token_req burst=200 delay=80;
+        limit_req zone=questionnaire_req burst=200 delay=80;
         proxy_pass <%= ENV["API_URL"] %>;
     }
 
